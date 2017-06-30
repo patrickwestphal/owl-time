@@ -8,7 +8,8 @@
   <packaging>jar</packaging>
 
   <name>owl-time</name>
-  <url>http://maven.apache.org</url>
+  <description>OWL-Time implementation based on the description at https://www.w3.org/TR/2017/CR-owl-time-20170606/</description>
+  <url>https://github.com/patrickwestphal/owl-time</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,11 +17,11 @@
   </properties>
 
   <dependencies>
-  	<dependency>
-       <groupId>net.sourceforge.owlapi</groupId>
-       <artifactId>owlapi-distribution</artifactId>
-       <version>${owlapi.version}</version>
-   </dependency>
+    <dependency>
+      <groupId>net.sourceforge.owlapi</groupId>
+      <artifactId>owlapi-distribution</artifactId>
+      <version>${owlapi.version}</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -28,4 +29,30 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.amashchenko.maven.plugin</groupId>
+          <artifactId>gitflow-maven-plugin</artifactId>
+          <version>1.2.3</version>
+          <configuration>
+            <installProject>false</installProject>
+            <verbose>true</verbose>
+
+            <gitFlowConfig>
+              <productionBranch>master</productionBranch>
+              <developmentBranch>develop</developmentBranch>
+              <featureBranchPrefix>feature/</featureBranchPrefix>
+              <releaseBranchPrefix>release/</releaseBranchPrefix>
+              <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+              <supportBranchPrefix>support/</supportBranchPrefix>
+              <versionTagPrefix></versionTagPrefix>
+            </gitFlowConfig>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
