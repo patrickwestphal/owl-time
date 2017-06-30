@@ -25,7 +25,7 @@ public enum OWLTime implements HasShortForm, HasIRI, HasPrefixedName {
     /** http://www.w3.org/2006/time#TRS */                        TIME_TRS(Namespaces.TIME, "TRS"),
     /** http://www.w3.org/2006/time#TimeZone */                   TIME_TIME_ZONE(Namespaces.TIME, "TimeZone"),
     /** http://www.w3.org/2006/time#DayOfWeek */                  TIME_DAY_OF_WEEK(Namespaces.TIME, "DayOfWeek"),
-    
+
     /* Properties */
     /** http://www.w3.org/2006/time#hasTime */                    TIME_HAS_TIME(Namespaces.TIME, "hasTime"),
     /** http://www.w3.org/2006/time#hasBeginning */               TIME_HAS_BEGINNING(Namespaces.TIME, "hasBeginning"),
@@ -90,7 +90,7 @@ public enum OWLTime implements HasShortForm, HasIRI, HasPrefixedName {
     /** http://www.w3.org/2006/time#generalDay */   TIME_GENERAL_DAY(Namespaces.TIME, "generalDay"),
     /** http://www.w3.org/2006/time#generalMonth */ TIME_GENERAL_MONTH(Namespaces.TIME, "generalMonth"),
     /** http://www.w3.org/2006/time#generalYear */  TIME_GENERAL_YEAR(Namespaces.TIME, "generalYear"),
-    
+
     /*Individuals */
     /** http://www.w3.org/2006/time#Friday */     TIME_FRIDAY(Namespaces.TIME, "Friday"),
     /** http://www.w3.org/2006/time#Monday */     TIME_MONDAY(Namespaces.TIME, "Monday"),
@@ -111,14 +111,14 @@ public enum OWLTime implements HasShortForm, HasIRI, HasPrefixedName {
     private final Namespaces namespace;
     private final String shortName;
     private final String prefixedName;
-    
+
     OWLTime(Namespaces namespace, String shortName) {
         this.namespace = namespace;
         this.shortName = shortName;
         prefixedName = namespace.getPrefixName() + ":" + shortName;
-        iri = IRI.create(namespace.toString(), shortName);
+        iri = IRI.create(namespace.getPrefixIRI(), shortName);
     }
-    
+
     public IRI getIRI() {
         return iri;
     }
@@ -126,11 +126,12 @@ public enum OWLTime implements HasShortForm, HasIRI, HasPrefixedName {
     public String getPrefixedName() {
         return prefixedName;
     }
-    
+
     public String getShortForm() {
         return shortName;
     }
-    
+
+    @Override
     public String toString() {
         return iri.toString();
     }

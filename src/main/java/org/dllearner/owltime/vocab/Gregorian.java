@@ -19,19 +19,19 @@ public enum Gregorian implements HasShortForm, HasIRI, HasPrefixedName {
     /** http://www.w3.org/ns/time/gregorian/October */   GREG_October(Namespaces.GREG, "October"),
     /** http://www.w3.org/ns/time/gregorian/November */  GREG_NOVEMBER(Namespaces.GREG, "November"),
     /** http://www.w3.org/ns/time/gregorian/December */  GREG_DECEMBER(Namespaces.GREG, "December");
-    
+
     private final IRI iri;
     private final Namespaces namespace;
     private final String shortName;
     private final String prefixedName;
-    
+
     Gregorian(Namespaces namespace, String shortName) {
         this.namespace = namespace;
         this.shortName = shortName;
         prefixedName = namespace.getPrefixName() + ":" + shortName;
-        iri = IRI.create(namespace.toString(), shortName);
+        iri = IRI.create(namespace.getPrefixIRI(), shortName);
     }
-    
+
     public IRI getIRI() {
         return iri;
     }
@@ -39,11 +39,12 @@ public enum Gregorian implements HasShortForm, HasIRI, HasPrefixedName {
     public String getPrefixedName() {
         return prefixedName;
     }
-    
+
     public String getShortForm() {
         return shortName;
     }
-    
+
+    @Override
     public String toString() {
         return iri.toString();
     }
